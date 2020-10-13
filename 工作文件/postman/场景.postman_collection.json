@@ -1,0 +1,2569 @@
+{
+	"info": {
+		"_postman_id": "c5b7a043-3758-4748-934d-ad8d7fa6196c",
+		"name": "场景",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "切勿调整，有问题提交测试组维护",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "业务场景",
+			"item": [
+				{
+					"name": "洗护预约",
+					"item": [
+						{
+							"name": "工作概览",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "ac75fa50-682f-43b9-95d7-e6804a69ab2d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/workspace/v2/work/summary",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"workspace",
+										"v2",
+										"work",
+										"summary"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询门店员工",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "ac75fa50-682f-43b9-95d7-e6804a69ab2d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/employees?all=1",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"employees"
+									],
+									"query": [
+										{
+											"key": "all",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询可预约宠物",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "ac75fa50-682f-43b9-95d7-e6804a69ab2d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/pet/breeds/bookable",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"pet",
+										"breeds",
+										"bookable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询用户及拥有的宠物",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "ac75fa50-682f-43b9-95d7-e6804a69ab2d",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/user/v2/list/search?filter=13818912894",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"user",
+										"v2",
+										"list",
+										"search"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "13818912894"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询当天所有洗护预约单",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "ac75fa50-682f-43b9-95d7-e6804a69ab2d"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/order/pet/list?start=1588003200000&end=1588089599999",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"order",
+										"pet",
+										"list"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "1588003200000"
+										},
+										{
+											"key": "end",
+											"value": "1588089599999"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建预约单-选择宠物",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/service/list?start=1588057200000&employeeId=1564&petId=33103&userId=1805307803&breedId=130",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"service",
+										"list"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "1588057200000"
+										},
+										{
+											"key": "employeeId",
+											"value": "1564"
+										},
+										{
+											"key": "petId",
+											"value": "33103"
+										},
+										{
+											"key": "userId",
+											"value": "1805307803"
+										},
+										{
+											"key": "breedId",
+											"value": "130"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建预约单-校验创建是否重叠",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pets\": [\n    {\n      \"petId\": 33103,\n      \"start\": 1588061700000,\n      \"employeeId\": 1727,\n      \"serviceSingleSkuIds\": [\n        345863\n      ],\n      \"servicePackageSkuId\": 124500\n    }\n  ],\n  \"transfer\": {\n    \"address\": \"\",\n    \"community\": \"\",\n    \"receiveTime\": null,\n    \"sendTime\": null\n  },\n  \"remark\": \"\",\n  \"status\": \"BOOKING\"\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/check/create/1805307803",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"check",
+										"create",
+										"1805307803"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "创建预约单",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pets\": [\n    {\n      \"petId\": 33086,\n      \"start\": 1588068900000,\n      \"employeeId\": 1564,\n      \"serviceSingleSkuIds\": [\n        345863\n      ]\n    }\n  ],\n  \"transfer\": {\n    \"address\": \"\",\n    \"community\": \"\",\n    \"receiveTime\": null,\n    \"sendTime\": null\n  },\n  \"remark\": \"\",\n  \"status\": \"BOOKING\"\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/1805307803/order",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"1805307803",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改预约单-获取预约单详情",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/order/32150",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"order",
+										"32150"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新预约单-校验更新是否重叠",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"transfer\": {\n    \"address\": \"\",\n    \"community\": \"\",\n    \"receiveTime\": null,\n    \"sendTime\": null\n  },\n  \"remark\": \"\",\n  \"status\": \"BOOKING\",\n  \"pet\": {\n    \"petId\": 33103,\n    \"start\": 1588061700000,\n    \"employeeId\": 1727,\n    \"serviceSingleSkuIds\": [\n      345863\n    ],\n    \"servicePackageSkuId\": 124500\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/check/update/95555",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"check",
+										"update",
+										"95555"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "更新预约单",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"transfer\": {\n    \"address\": \"\",\n    \"community\": \"\",\n    \"receiveTime\": null,\n    \"sendTime\": null\n  },\n  \"remark\": \"\",\n  \"status\": \"BOOKING\",\n  \"pet\": {\n    \"petId\": 33103,\n    \"start\": 1588061700000,\n    \"employeeId\": 1727,\n    \"serviceSingleSkuIds\": [\n      345010,\n      345863\n    ],\n    \"servicePackageSkuId\": 124500\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/order/pet/95553",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"order",
+										"pet",
+										"95553"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "预约单退单",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"REFUNDED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/order/update/status/95555",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"order",
+										"update",
+										"status",
+										"95555"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "预约单开单",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/deal/order/95553/1194",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"deal",
+										"order",
+										"95553",
+										"1194"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "洗护预约单完成",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"status\": \"FINISHED\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/order/update/status/95553",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"order",
+										"update",
+										"status",
+										"95553"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "预约单完成后-通知用户",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "f-session",
+										"type": "text",
+										"value": "3493d5b9-b8c1-49d6-8293-ca5d8d95e8cd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}api/admin/booking/v2/order/finish/95553",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"v2",
+										"order",
+										"finish",
+										"95553"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "收银台结算",
+					"item": [
+						{
+							"name": "收银台搜索用户",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6c304f54-5e34-406c-b4dd-bb8d7c202263",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"//将数据解析成json格式",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试",
+											"console.log(responseBody);",
+											"",
+											"//获取user_id",
+											"var user_id = responseBody.data[0].id;",
+											"",
+											"//设置成全局变量",
+											"pm.globals.set(\"user_id\", user_id);",
+											"//调试",
+											"//console.log(user_id);",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{chain}}api/admin/store/user/v2/list/search?filter=19916939575",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"user",
+										"v2",
+										"list",
+										"search"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "19916939575"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取用户基本信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "18eca0bc-2d75-4606-88b8-68a1b4f3ffe4",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试代码",
+											"console.log(responseBody);",
+											"//console.log(responseBody.code);",
+											"",
+											"//获取vipcardid",
+											"var vipCard_id = responseBody.data.vipCardId;",
+											"",
+											"//设置全局变量",
+											"pm.globals.set('vipCard_id',vipCard_id);",
+											"console.log(vipCard_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/user/v2/{{user_id}}",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"user",
+										"v2",
+										"{{user_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取用户可用优惠",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "43d40cd3-c6fe-4b3f-a79f-9717c6476734",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}/api/admin/store/user/v2/{{user_id}}/coupon/list?all=0",
+									"host": [
+										"{{chain}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"store",
+										"user",
+										"v2",
+										"{{user_id}}",
+										"coupon",
+										"list"
+									],
+									"query": [
+										{
+											"key": "all",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取用户所有可用服务",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "db785adf-1db0-4c28-849d-c9efb7abeb1a",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}/api/admin/store/service/list/status/1?id={{user_id}}",
+									"host": [
+										"{{chain}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"store",
+										"service",
+										"list",
+										"status",
+										"1"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "{{user_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取满减返/次卡/商品组合",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/package/v3/spu/list?status=1&{{vipCard_id}}",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"package",
+										"v3",
+										"spu",
+										"list"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "1"
+										},
+										{
+											"key": "{{vipCard_id}}",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取商品sku",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5f6ba0cf-dab4-4dbe-93e7-01648add7a25",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试",
+											"console.log(responseBody);",
+											"//console.log(responseBody.code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/warehouse/products/sku/v3?status=1&userId={{user_id}}&vipCardId={{vipCard_id}}",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"warehouse",
+										"products",
+										"sku",
+										"v3"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "1"
+										},
+										{
+											"key": "userId",
+											"value": "{{user_id}}"
+										},
+										{
+											"key": "vipCardId",
+											"value": "{{vipCard_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取门店服务套餐",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "303be61a-ae74-4b14-8ddb-09b48b6c77bb",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试",
+											"console.log(responseBody);",
+											"//console.log(responseBody.code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}/api/admin/store/cashier/v2/service/package/list?userId={{user_id}}&vipCardId={{vipCard_id}}",
+									"host": [
+										"{{chain}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"store",
+										"cashier",
+										"v2",
+										"service",
+										"package",
+										"list"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "{{user_id}}"
+										},
+										{
+											"key": "vipCardId",
+											"value": "{{vipCard_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取门店服务sku",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "53bdc589-8755-4fd5-8791-a0ceba4cb10c",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试",
+											"console.log(responseBody);",
+											"//console.log(responseBody.code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{chain}}api/admin/store/service/list/v2?userId={{user_id}}&vipCardId={{vipCard_id}}",
+									"host": [
+										"{{chain}}api"
+									],
+									"path": [
+										"admin",
+										"store",
+										"service",
+										"list",
+										"v2"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "{{user_id}}"
+										},
+										{
+											"key": "vipCardId",
+											"value": "{{vipCard_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "加购物车",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "822f756e-882a-4916-ae61-9bd230ba77db",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"closeUnpaidOrder\": false,\n  \"consumeItems\": {\n    \"packages\": [],\n    \"services\": [\n      {\n        \"number\": 1,\n        \"employeeId\": 1029,\n        \"skuId\": 175565\n      }\n    ],\n    \"products\": []\n  },\n  \"discountParams\": [],\n  \"pSys\": \"balance\",\n  \"discount\": true,\n  \"vipCardId\": 1198,\n  \"useMedicalPoints\": 0,\n  \"bookingId\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}/api/admin/store/user/{{user_id}}/coupon/list/available",
+									"host": [
+										"{{chain}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"store",
+										"user",
+										"{{user_id}}",
+										"coupon",
+										"list",
+										"available"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "购物车结算cost",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "927b382d-9575-48a9-80b6-8e36bda18330",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试",
+											"console.log(responseBody);",
+											"//console.log(responseBody.code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"closeUnpaidOrder\": false,\n  \"consumeItems\": {\n    \"packages\": [],\n    \"services\": [\n      {\n        \"number\": 1,\n        \"employeeId\": 1029,\n        \"skuId\": 175565\n      }\n    ],\n    \"products\": []\n  },\n  \"discountParams\": [],\n  \"pSys\": \"balance\",\n  \"discount\": true,\n  \"point\": false,\n  \"vipCardId\": 1198,\n  \"useMedicalPoints\": 0,\n  \"bookingId\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}/api/admin/store/user/v2/{{user_id}}/cost",
+									"host": [
+										"{{chain}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"store",
+										"user",
+										"v2",
+										"{{user_id}}",
+										"cost"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "支付",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0985d16a-5988-427c-a533-8bbaea56d359",
+										"exec": [
+											"//断言->http接口状态",
+											"pm.test(\"http返回正常\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var responseBody =JSON.parse(responseBody);",
+											"",
+											"//断言->API接口状态",
+											"pm.test(\"API返回正常\", function () {",
+											"    if (responseBody.code === 0);",
+											"});",
+											"",
+											"//调试",
+											"console.log(responseBody);",
+											"//console.log(responseBody.code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "f-session",
+										"value": "832e750f-f6ba-4278-9634-fe1c59f6245b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"closeUnpaidOrder\": false,\n  \"consumeItems\": {\n    \"packages\": [],\n    \"services\": [\n      {\n        \"number\": 1,\n        \"employeeId\": 1029,\n        \"skuId\": 175565\n      }\n    ],\n    \"products\": []\n  },\n  \"discountParams\": [],\n  \"pSys\": \"balance\",\n  \"discount\": true,\n  \"point\": false,\n  \"vipCardId\": 1198,\n  \"useMedicalPoints\": 0,\n  \"bookingId\": null,\n  \"costValue\": 16,\n  \"needValidCode\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chain}}/api/admin/store/user/v2/{{user_id}}/consume",
+									"host": [
+										"{{chain}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"store",
+										"user",
+										"v2",
+										"{{user_id}}",
+										"consume"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "B2B商城交易",
+					"item": [],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "59fa8159-8459-4864-a8b7-3a9ce94e5e1e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "22fb5ca8-c804-466e-a24c-a59971bf11a7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "小程序用户端",
+					"item": [
+						{
+							"name": "洗护预约",
+							"item": [
+								{
+									"name": "查询宠物及服务",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c32d44b4-f9af-45fc-ab40-6d8fc23220bf",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0); ",
+													"});",
+													"",
+													"",
+													"//设置pet_id->选择预约时间",
+													"var pet_id = responseBody.data[0].id;",
+													"pm.globals.set(\"pet_id\", pet_id);",
+													"",
+													"//选择服务套餐",
+													"var package_id = responseBody.data[0].servicePackageSkus[0].id;",
+													"pm.globals.set(\"package_id\", package_id);",
+													"",
+													"//调试代码",
+													"//console.log(responseBody);",
+													"//console.log(responseBody.data[0].id);",
+													"",
+													"",
+													"//console.log(pm.response);",
+													"console.log(responseBody);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}/api/web/booking/236/pet/v2?userBalanceId=1204",
+											"host": [
+												"{{food}}"
+											],
+											"path": [
+												"api",
+												"web",
+												"booking",
+												"236",
+												"pet",
+												"v2"
+											],
+											"query": [
+												{
+													"key": "userBalanceId",
+													"value": "1204"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "查询时间范围",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d4e03627-452c-42b1-a72e-85ed3c521e05",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//设置环境变量day和time->查看预约单详情",
+													"var day = responseBody.data[0].days[0].year+ '\\.' + responseBody.data[0].days[0].day;",
+													"pm.globals.set(\"day\", day);",
+													"console.log(responseBody.data[0])",
+													"",
+													"var times = responseBody.data[0].days[0].times;",
+													"",
+													"for(var i=0;i<times.length;i++){",
+													"    console.log(times[i]);",
+													"    ",
+													"    if (times[i].isBookable === true){",
+													"        console.log(i);",
+													"        pm.globals.set(\"time\", times[i].time);",
+													"        console.log(times[i].time);",
+													"        break;",
+													"    }",
+													"}",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data[0]);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "79275627-96e8-49f5-9ead-850e7e165845",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[{\n\t\"petId\":{{pet_id}},\n\t\"servicePackageSkuId\":{{package_id}},\n\t\"serviceSingleSkuIds\":[]\n}]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/booking/236/date/range/v2",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"booking",
+												"236",
+												"date",
+												"range",
+												"v2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "下单（结算）",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c68bee71-afbf-47dc-ae81-b37d9cc98826",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data[0]);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"finalPaymentPrice\":120,\n  \"productPackageId\":0,\n  \"pets\":[\n    {\n      \"servicePackageSkuId\":{{package_id}},\n      \"serviceSingleSkuIds\":[\n      ]\n    }],\n  \"selectedPrepurchases\":[\n  ],\n  \"selectedCoupons\":[\n  ],\n  \"selectedDeductions\":[\n  ],\n  \"selectedServiceCoupons\":[\n  ],\n  \"paymentSystem\":\"BALANCE\",\n  \"storeId\":236,\n  \"userBalanceId\":1204,\n  \"isUseVipDiscount\":true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/booking/cost/v2",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"booking",
+												"cost",
+												"v2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "提交订单",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0588cdb2-8de7-409e-96e2-6918e57a793a",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"",
+													"pm.globals.unset(\"pet_id\");",
+													"pm.globals.unset(\"package_id\");",
+													"pm.globals.unset(\"day\");",
+													"pm.globals.unset(\"time\");",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data[0]);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "d540e4b8-0055-40e5-8420-17b762b5efdf",
+												"exec": [
+													"package_id = pm.globals.get(\"package_id\");",
+													"pet_id = pm.globals.get(\"pet_id\");",
+													"day = pm.globals.get(\"day\");",
+													"time = pm.globals.get(\"time\");",
+													"",
+													"console.log(package_id);",
+													"console.log(pet_id);",
+													"console.log(day);",
+													"console.log(time);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"finalPaymentPrice\":120,\n  \"productPackageId\":\"0\",\n  \"pets\":[\n    {\n      \"petId\":{{pet_id}},\n      \"servicePackageSkuId\":{{package_id}},\n      \"serviceSingleSkuIds\":[\n      ],\n      \"day\":\"{{day}}\",\n      \"time\":\"{{time}}\"\n    }],\n  \"remark\":\"\",\n  \"transfer\":{\n    \"sendTime\":null,\n    \"receiveTime\":null,\n    \"communityName\":\"\",\n    \"address\":\"\"\n  },\n  \"bookingSourceEnum\":\"WECHAT\",\n  \"paymentSystem\":\"BALANCE\",\n  \"points\":0,\n  \"selectedDeductions\":[\n  ],\n  \"selectedPrepurchases\":[\n  ],\n  \"selectedCoupons\":[\n  ],\n  \"selectedServiceCoupons\":[\n  ],\n  \"userBalanceId\":1204,\n  \"isUseVipDiscount\":true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}/api/web/booking/236/order/confirm",
+											"host": [
+												"{{food}}"
+											],
+											"path": [
+												"api",
+												"web",
+												"booking",
+												"236",
+												"order",
+												"confirm"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "我的->预约单列表",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "21ccb80e-bf49-4e22-921e-90bd7b845b07",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//设置环境变量booking_id->查看预约单详情",
+													"var booking_id = responseBody.data[0].id;",
+													"pm.globals.set(\"booking_id\", booking_id);",
+													"",
+													"//调试代码",
+													"console.log(responseBody.code);",
+													"console.log(responseBody.data[0].id);",
+													"",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{food}}/api/web/booking/list",
+											"host": [
+												"{{food}}"
+											],
+											"path": [
+												"api",
+												"web",
+												"booking",
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "我的->预约单详情",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "bee07516-954b-4b4c-8032-681e0098fb7c",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"url": {
+											"raw": "{{food}}api/web/booking/{{booking_id}}",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"booking",
+												"{{booking_id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "我的->取消订单",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "666dd7b8-5cc2-478e-89b8-b5ed20ffcd05",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//清除全局变量booking_id",
+													"pm.globals.unset(\"booking_id\");",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"status\": \"DISCARD\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/booking/order/update/status/{{booking_id}}",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"booking",
+												"order",
+												"update",
+												"status",
+												"{{booking_id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "商城购买",
+							"item": [
+								{
+									"name": "获取专区",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ddb42cfa-a8aa-4ea6-9623-375dfccf7b23",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"console.log( responseBody);",
+													"pet_category = responseBody.data[1].category",
+													"pm.globals.set(\"pet_category\", pet_category);",
+													"",
+													"category_id = responseBody.data[1].children[0].id",
+													"pm.globals.set(\"category_id\", category_id);",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{food}}api/web/mall/category/list/v3",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"category",
+												"list",
+												"v3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "商城列表",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3b6623d0-84b7-470b-9f25-0cd4bce8f217",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"sku_id = responseBody.data.list[3].id;",
+													"pm.globals.set(\"sku_id\", sku_id);",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{food}}api/web/mall/product/sku/list/v2?petCategory={{pet_category}}&categoryId={{category_id}}&paginator.pageIndex=1&paginator.pageSize=10&sort=creationDate%20desc",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"product",
+												"sku",
+												"list",
+												"v2"
+											],
+											"query": [
+												{
+													"key": "petCategory",
+													"value": "{{pet_category}}"
+												},
+												{
+													"key": "categoryId",
+													"value": "{{category_id}}"
+												},
+												{
+													"key": "paginator.pageIndex",
+													"value": "1"
+												},
+												{
+													"key": "paginator.pageSize",
+													"value": "10"
+												},
+												{
+													"key": "sort",
+													"value": "creationDate%20desc"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "商品详情",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d72e1c1b-e577-4735-8c24-bc2e1dd96400",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{food}}api/web/mall/product/sku/detail/{{sku_id}}?shareUserId=",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"product",
+												"sku",
+												"detail",
+												"{{sku_id}}"
+											],
+											"query": [
+												{
+													"key": "shareUserId",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "加入购物车",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e14f7582-c50b-4cc4-91a0-97087b4d411f",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//pm.globals.unset(\"pet_category\");",
+													"//pm.globals.unset(\"category_id\");",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"skuList\":[\n    {\n      \"id\":{{sku_id}},\n      \"number\":1\n    }],\n  \"shareUserId\":\"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/mall/cart",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"cart"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取用户信息",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "771ac0d9-f00b-40fb-aba8-141c3b262d23",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//pm.globals.unset(\"pet_category\");",
+													"//pm.globals.unset(\"category_id\");",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/user/personal/center/myAccount/v2",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"user",
+												"personal",
+												"center",
+												"myAccount",
+												"v2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取购物车信息",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a3aeffd3-b849-4c00-bfd1-6736b522457e",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//pm.globals.unset(\"pet_category\");",
+													"//pm.globals.unset(\"category_id\");",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/mall/cart/v2/list",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"cart",
+												"v2",
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取地址",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0356d6d5-5571-4bb8-86d9-06368c761c22",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"address_id = responseBody.result[0].id;",
+													"pm.globals.set(\"address_id\", address_id);",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/shipaddress/list",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"shipaddress",
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "获取余额",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ff3f1b70-ccbd-4c76-9267-0b49cd7b9e5f",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"user_balance_id = responseBody.data.userBalanceId;",
+													"pm.globals.set(\"user_balance_id\", user_balance_id);//调试代码",
+													"",
+													"//console.log(responseBody.code);",
+													"console.log(responseBody.data.userBalanceId);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/user/personal/center/available/balance?storeId=-1",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"user",
+												"personal",
+												"center",
+												"available",
+												"balance"
+											],
+											"query": [
+												{
+													"key": "storeId",
+													"value": "-1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "下单（结算）",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9119ef6f-e300-4c36-98a3-4a63766d1369",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"//调试代码",
+													"console.log(responseBody.code);",
+													"console.log(responseBody.data[0]);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"addressId\":{{address_id}},\n  \"points\":0,\n  \"skuItems\":[\n    {\n      \"id\":{{sku_id}},\n      \"number\":1,\n      \"packageItem\":0\n    }],\n  \"packages\":[\n  ],\n  \"paymentSystem\":\"BALANCE\",\n  \"couponList\":[\n  ],\n  \"deliveryMode\":\"EXPRESS\",\n  \"deductionList\":[\n  ],\n  \"userBalanceId\":{{user_balance_id}},\n  \"isUseVipDiscount\":true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/mall/order/cost/v2",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"order",
+												"cost",
+												"v2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "提交订单",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "eb6d3ce9-7943-4062-9a46-4cc531a017a9",
+												"exec": [
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"var responseBody =JSON.parse(responseBody);",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"order_id = responseBody.orderId;",
+													"pm.globals.set(\"order_id\", order_id);",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data[0]);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "a00eebc7-e007-415d-9145-efc350c11db9",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"addressId\":{{address_id}},\n  \"points\":0,\n  \"skuItems\":[\n    {\n      \"id\":{{sku_id}},\n      \"number\":1,\n      \"packageItem\":0\n    }],\n  \"packages\":[\n  ],\n  \"paymentSystem\":\"BALANCE\",\n  \"couponList\":[\n  ],\n  \"deliveryMode\":\"EXPRESS\",\n  \"deductionList\":[\n  ],\n  \"userBalanceId\":{{user_balance_id}},\n  \"isUseVipDiscount\":true,\n  \"remark\":\"\",\n  \"amount\":\"0.01\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/mall/order/create",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"order",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "支付结果页面",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ae8d5df4-db09-481e-9726-1db324f674f6",
+												"exec": [
+													"var responseBody =JSON.parse(responseBody);",
+													"console.log(responseBody);",
+													"",
+													"//断言->http接口状态",
+													"pm.test(\"http返回正常\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"//断言->API接口状态",
+													"pm.test(\"API返回正常\", function () {",
+													"    if (responseBody.code === 0);",
+													"});",
+													"",
+													"tests[\"支付结果\"] = responseBody.data.code === 0;",
+													"",
+													"pm.globals.unset(\"category_id\");",
+													"pm.globals.unset(\"pet_category\");",
+													"pm.globals.unset(\"sku_id\");",
+													"pm.globals.unset(\"user_balance_id\");",
+													"pm.globals.unset(\"order_id\");",
+													"",
+													"",
+													"//调试代码",
+													"//console.log(responseBody.code);",
+													"//console.log(responseBody.data[0]);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "82c95eb7-5d72-4f5a-aa44-aed70d362a6e",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "f-session",
+												"type": "text",
+												"value": "060156d7-0d61-4f18-9187-3b22c1728a6e"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{food}}api/web/mall/order/crt/ret?orderId={{order_id}}",
+											"host": [
+												"{{food}}api"
+											],
+											"path": [
+												"web",
+												"mall",
+												"order",
+												"crt",
+												"ret"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "{{order_id}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "小程序员工端",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
